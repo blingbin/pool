@@ -11,7 +11,7 @@ import (
 func main() {
 
 	//build 创建连接的方法
-	build := func() (interface{}, error) { return net.Dial("tcp", "127.0.0.1:80") }
+	factory := func() (interface{}, error) { return net.Dial("tcp", "127.0.0.1:80") }
 
 	//close 关闭链接的方法
 	destroy := func(v interface{}) error { return v.(net.Conn).Close() }
@@ -20,7 +20,7 @@ func main() {
 	poolConfig := &pool.TPoolConf{
 		InitialCap: 5,
 		MaxCap:     30,
-		Factory:    build,
+		Factory:    factory,
 		Close:      destroy,
 		//链接最大空闲时间，超过该时间的链接 将会关闭，可避免空闲时链接EOF，自动失效的问题
 		IdleTimeout: 15 * time.Second,

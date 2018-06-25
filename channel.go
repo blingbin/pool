@@ -36,7 +36,7 @@ type idleConn struct {
 }
 
 //NewChannelPool 初始化链接
-func NewChannelPool(poolConfig *TPoolConf) (IPool, error) {
+func NewChannelPool(poolConfig *TPoolConf) (Pool, error) {
 	if poolConfig.InitialCap < 0 || poolConfig.MaxCap <= 0 || poolConfig.InitialCap > poolConfig.MaxCap {
 		return nil, errors.New("invalid capacity settings")
 	}

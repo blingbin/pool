@@ -20,7 +20,7 @@ build := func() (interface{}, error) { return net.Dial("tcp", "127.0.0.1:4000") 
 destroy := func(v interface{}) error { return v.(net.Conn).Close() }
 
 //创建一个连接池： 初始化5，最大链接30
-poolConfig := &pool.PoolConfig{
+poolConfig := &pool.TPoolConf{
 	InitialCap: 5,
 	MaxCap:     30,
 	Factory:    build,

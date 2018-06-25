@@ -8,7 +8,7 @@ var (
 )
 
 //Pool 基本方法
-type IPool interface {
+type Pool interface {
 	Get() (interface{}, error)
 
 	Put(interface{}) error
